@@ -26,7 +26,7 @@ const ajvSanitizer = (ajv, extraSanitizers) => {
 
 			return (data, currentDataPath, parentDataObject, propertyName) => {
 				if (!currentDataPath && !currentDataPath.parentDataProperty && currentDataPath.parentDataProperty !== 0) throw new TypeError('Data must be a property of an object');
-				currentDataPath.parentData[currentDataPath.parentDataProperty] = sanitize(data);
+				currentDataPath.parentData[currentDataPath.parentDataProperty] = data != null ? sanitize(data) : null;
 				return true;
 			};
 		},
